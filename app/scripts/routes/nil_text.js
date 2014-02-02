@@ -9,8 +9,13 @@ nilText.Routers = nilText.Routers || {};
 
 	    routes: {
 	      '': 'index',
+        'foo': 'bar',
 	      'show/:id': 'show'
 	    },
+
+      bar: function(){
+        $('body').append('asdfasdfasdf');
+      },
 
 	    index: function(){
 	      $('body').append('index route has been called');

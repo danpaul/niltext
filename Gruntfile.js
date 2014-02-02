@@ -6,6 +6,11 @@ var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
 };
 
+
+var modRewrite = require('connect-modrewrite');
+
+
+
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'
@@ -80,7 +85,10 @@ module.exports = function (grunt) {
                         return [
                             lrSnippet,
                             mountFolder(connect, '.tmp'),
-                            mountFolder(connect, yeomanConfig.app)
+                            mountFolder(connect, yeomanConfig.app),
+                        modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png$ /index.html [L]']),
+                        mountFolder(connect, '.tmp'),
+                        mountFolder(connect, yeomanConfig.app)
                         ];
                     }
                 }
