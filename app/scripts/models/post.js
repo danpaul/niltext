@@ -11,26 +11,33 @@ nilText.Models = nilText.Models || {};
 (function () {
     'use strict';
 
-    nilText.Models.PostModel = Backbone.Model.extend({
-
-        url: 'foo',
-    //     content: String,
-    // author: {type: mongoose.Schema.Types.ObjectId, index: true}
+    nilText.Models.Post = Backbone.Model.extend({
+        // url: '',
+        urlRoot: '',
 
         initialize: function() {
-            // this.url = nilText.config.baseUrl + '/' + id;
-// console.log(this.url);
+            // this.url = nilText.config.baseUrl + '/post/' + this.id;
+            // this.url = nilText.config.baseUrl + '/post';
+console.log('init called');
+this.urlRoot = nilText.config.baseUrl + '/post';
+
         },
 
         defaults: {
+            id: '',
             content: '',
             author: ''
         },
 
         validate: function(attrs, options){
+console.log('validate called');
         },
 
         parse: function(response, options){
+
+alert('foo');
+console.log('foo');
+// console.log(response);
             return response;
         },
 

@@ -10,8 +10,6 @@ nilText.Routers = nilText.Routers || {};
 	    routes: {
 	      '': 'index',
         'post/:id': 'post',
-        // 'post-find-one': 'postFindOne',
-        // 'post-find-one': 'postFindOne',
 	      'show/:id': 'show'
 	    },
 
@@ -20,18 +18,19 @@ nilText.Routers = nilText.Routers || {};
 	    },
 
       post: function(id){
-// console.log(id);
-        var post = new nilText.Models.PostModel(id);
-      },
-
-      postFindOne: function(){
-        var post = new nilText.Models.PostModel();
-
-console.log(post);
-
-// $(document.body).append('find one');
-// console.log('foo');
-
+        var post = new nilText.Models.Post({'id': id});
+        post.fetch({
+// dataType: 'text',
+          // dataType: 'jsonp',
+          success: function(post){
+            console.log(post);
+          },
+          error: function(model, error){
+console.log(error);
+// console.log(error);
+// console.log(error.toJSON());
+          }
+        });
       },
 
 	    show: function(id){
