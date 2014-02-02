@@ -1,5 +1,7 @@
 /*global nilText, Backbone*/
 
+// 51f87bdbe1df9a6d11000002
+
 nilText.Routers = nilText.Routers || {};
 
 (function () {
@@ -10,6 +12,7 @@ nilText.Routers = nilText.Routers || {};
 	    routes: {
 	      '': 'index',
         'post/:id': 'post',
+        'posts-test': 'postsTest',
 	      'show/:id': 'show'
 	    },
 
@@ -18,19 +21,18 @@ nilText.Routers = nilText.Routers || {};
 	    },
 
       post: function(id){
-        var post = new nilText.Models.Post({'id': id});
-        post.fetch({
-// dataType: 'text',
-          // dataType: 'jsonp',
-          success: function(post){
-            console.log(post);
-          },
-          error: function(model, error){
-console.log(error);
-// console.log(error);
-// console.log(error.toJSON());
-          }
+        var post = new nilText.Models.PostModel({'id': id});
+      },
+
+      postsTest: function(){
+        var posts = new nilText.Collections.PostCollection();
+
+        posts.on("add", function(){
+          console.log(posts);
         });
+
+        posts.addPosts(['51f87bdbe1df9a6d11000002']);
+
       },
 
 	    show: function(id){

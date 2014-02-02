@@ -11,16 +11,13 @@ nilText.Models = nilText.Models || {};
 (function () {
     'use strict';
 
-    nilText.Models.Post = Backbone.Model.extend({
-        // url: '',
-        urlRoot: '',
+    nilText.Models.PostModel = Backbone.Model.extend({
+
+        urlRoot: nilText.config.baseUrl + '/post',
 
         initialize: function() {
-            // this.url = nilText.config.baseUrl + '/post/' + this.id;
-            // this.url = nilText.config.baseUrl + '/post';
-console.log('init called');
-this.urlRoot = nilText.config.baseUrl + '/post';
-
+// console.log('init');
+            // this.fetch();
         },
 
         defaults: {
@@ -30,14 +27,11 @@ this.urlRoot = nilText.config.baseUrl + '/post';
         },
 
         validate: function(attrs, options){
-console.log('validate called');
+
         },
 
         parse: function(response, options){
-
-alert('foo');
-console.log('foo');
-// console.log(response);
+            response.id = response._id;
             return response;
         },
 
