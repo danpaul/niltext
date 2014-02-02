@@ -9,17 +9,30 @@ nilText.Routers = nilText.Routers || {};
 
 	    routes: {
 	      '': 'index',
-        'foo': 'bar',
+        'post/:id': 'post',
+        // 'post-find-one': 'postFindOne',
+        // 'post-find-one': 'postFindOne',
 	      'show/:id': 'show'
 	    },
-
-      bar: function(){
-        $('body').append('asdfasdfasdf');
-      },
 
 	    index: function(){
 	      $('body').append('index route has been called');
 	    },
+
+      post: function(id){
+// console.log(id);
+        var post = new nilText.Models.PostModel(id);
+      },
+
+      postFindOne: function(){
+        var post = new nilText.Models.PostModel();
+
+console.log(post);
+
+// $(document.body).append('find one');
+// console.log('foo');
+
+      },
 
 	    show: function(id){
 	      $(document.body).append('show route has been called with id: ' + id);
@@ -28,21 +41,3 @@ nilText.Routers = nilText.Routers || {};
     });
 
 })();
-
-
-
-  // textNil.router = Backbone.Router.extend({
-  //   routes: {
-  //     '': 'index',
-  //     'show/:id': 'show'
-  //   },
-
-  //   index: function(){
-  //     $('#form').append('index route has been called');
-  //   },
-
-  //   show: function(id){
-  //     $(document.body).append('show route has been called with id: ' + id);
-  //   }
-
-  // });
