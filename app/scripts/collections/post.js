@@ -11,24 +11,19 @@ nilText.Collections = nilText.Collections || {};
 
         addPosts: function(ids){
 
+        	var that = this;
 
-// need to check if posts with id is in collection yet
-
-
-			var that = this;
         	$.get(nilText.config.baseUrl + '/posts/', {
-        		'ids[]': ids
-        	}
-        	, function(data){
+				'ids[]': _.map(ids, function(id){ if( that.get(id) == undefined ){ return id; }	})
+        	}, 
+        	function(data){
         		_.each(data, function(post){
         			post.id = post._id;
         			delete(post._id);
         			var newPost = new nilText.Models.PostModel(post);
         			that.add(newPost);
-
         		});
         	});
         }
     });
-
 })();

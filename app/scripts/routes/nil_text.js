@@ -1,6 +1,7 @@
 /*global nilText, Backbone*/
 
 // 51f87bdbe1df9a6d11000002
+// posts.addPosts(['51f87bdbe1df9a6d11000002', '525f3132bab2553d05000001', '525f367075b3fcdb08000001']);
 
 nilText.Routers = nilText.Routers || {};
 
@@ -31,7 +32,7 @@ nilText.Routers = nilText.Routers || {};
           console.log(posts);
         });
 
-        posts.addPosts(['51f87bdbe1df9a6d11000002']);
+        posts.addPosts(['51f87bdbe1df9a6d11000002', '525f3132bab2553d05000001', '525f367075b3fcdb08000001']);
 
       },
 
