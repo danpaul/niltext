@@ -1,6 +1,3 @@
-/*global nilText, $*/
-
-
 window.nilText = {
     config:{
         'baseUrl': 'http://localhost:3000/api'
