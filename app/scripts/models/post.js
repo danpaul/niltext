@@ -13,7 +13,7 @@ nilText.Models = nilText.Models || {};
 
     nilText.Models.PostModel = Backbone.Model.extend({
 
-        urlRoot: nilText.config.baseUrl + '/post',
+        // urlRoot: nilText.config.baseUrl + '/post',
 
         initialize: function() {
 // console.log('init');

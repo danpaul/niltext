@@ -10,7 +10,7 @@ nilText.Models = nilText.Models || {};
         url: '',
 
         initialize: function() {
-console.log('post node created')
+// console.log('post node created')
         },
 
         defaults: {

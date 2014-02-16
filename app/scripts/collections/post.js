@@ -19,13 +19,13 @@ nilText.Collections = nilText.Collections || {};
                     method: 'get',
                     url: nilText.config.baseUrl + '/posts/',
                     data: {'ids[]': unstoredIds}
-                }).error(function(jqXHR, status, error){ callback(error, null); }
+                }).error(function(jqXHR, status, error){ throw(error); }
                 ).success(function(data){
                     that.storePosts(data);
-                    callback(null, that.getPosts(ids));
+                    if(callback){ callback(null, that.getPosts(ids)); }
                 });
             }else{
-                callback(null, that.getPosts(ids));
+                if(callback){ callback(null, that.getPosts(ids)); }
             }
         },
 

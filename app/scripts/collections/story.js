@@ -6,9 +6,7 @@ nilText.Collections = nilText.Collections || {};
     'use strict';
 
     nilText.Collections.StoryCollection = Backbone.Collection.extend({
-
         model: nilText.Models.StoryModel
-
     });
 
 })();
