@@ -10,6 +10,10 @@ nilText.Collections = nilText.Collections || {};
         model: nilText.Models.PostNodeModel,
         postCollection: null,
 
+        initialize: function(){
+        	this.postCollection = nilText.postCollection;
+        },
+
         addPostNodes: function(ids, callback){
         	var that = this;
             var unstoredIds = _.filter(ids, function(id){ return that.get(id) == undefined });
@@ -23,11 +27,12 @@ nilText.Collections = nilText.Collections || {};
                 	var postIds = _.map(postNodes, function(postNode){return postNode.post});
                     that.storePosts(postNodes);
                     if( that.postCollection === null ){ throw('postCollection not defined'); }
-                    that.postCollection.addPosts(postIds);
-                    callback(null, that.getPosts(ids));
+                    that.postCollection.addPosts(postIds, function(){
+                    	if(callback){ callback(that.getPosts(ids)); }
+                    });
                 });
             }else{
-                callback(null, that.getPosts(ids));
+            	that.getPosts(ids, callback);
             }
         },
 

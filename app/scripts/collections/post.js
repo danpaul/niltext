@@ -22,10 +22,10 @@ nilText.Collections = nilText.Collections || {};
                 }).error(function(jqXHR, status, error){ throw(error); }
                 ).success(function(data){
                     that.storePosts(data);
-                    if(callback){ callback(null, that.getPosts(ids)); }
+                    if(callback){ callback(that.getPosts(ids)); }
                 });
             }else{
-                if(callback){ callback(null, that.getPosts(ids)); }
+                if(callback){ callback(that.getPosts(ids)); }
             }
         },
 

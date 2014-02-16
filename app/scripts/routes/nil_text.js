@@ -12,6 +12,8 @@ nilText.Routers = nilText.Routers || {};
         'post/:id': 'post',
         'posts-test': 'postsTest',
         'post-node-test': 'postNodeTest',
+        'story/:id/:node': 'storyNode',
+        'story/:id': 'story',
 	      'show/:id': 'show'
 	    },
 
@@ -23,9 +25,22 @@ nilText.Routers = nilText.Routers || {};
         var post = new nilText.Models.PostModel({'id': id});
       },
 
+      storyNode: function(storyId, postNodeId){
+        var story = new nilText.Models.StoryModel({'id': storyId});
+        story.create(postNodeId, function(story){
+          console.log(story.postNodeCollection);
+        });
+      },
+
+      story: function(id){
+        var story = new nilText.Models.StoryModel({'id': id});
+console.log(id)
+      },
+
       postNodeTest: function(){
+
         var posts = new nilText.Collections.PostCollection();
-        var postNodes = new nilText.Collections.PostNodeCollection('foo');
+        var postNodes = new nilText.Collections.PostNodeCollection();
         postNodes.postCollection = posts;
 
         postNodes.addPostNodes(['51fe872f04c18dfe12000004', '51fe87360c89100713000004', '51fe87cecc12c59c13000004'], function(err, record){

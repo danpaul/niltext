@@ -5,20 +5,18 @@ window.nilText = {
     Models: {},
     Collections: {},
     Views: {},
+    postCollection: null,
     Routers: {},
     init: function () {
         'use strict';
-        // window.nilText.Collections.PostNodeCollection.foo = 'bar';
-
+        this.postCollection = new this.Collections.PostCollection();
     }
 };
 
 $(document).ready(function () {
     'use strict';
+
+    nilText.init();
     new nilText.Routers.NilTextRouter;
     Backbone.history.start({pushState: true});
-    nilText.init();
-// console.log(nilText.Collections.PostNodeCollection);
-    // nilText.Collections.PostNodeCollection.foo = 'bar';
-
 });
