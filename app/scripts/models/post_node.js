@@ -8,9 +8,10 @@ nilText.Models = nilText.Models || {};
     nilText.Models.PostNodeModel = Backbone.Model.extend({
 
         url: '',
+        postCollection: null,
 
         initialize: function() {
-// console.log('post node created')
+            this.postCollection = nilText.postCollection;
         },
 
         defaults: {
@@ -25,7 +26,20 @@ nilText.Models = nilText.Models || {};
 
         parse: function(response, options)  {
             return response;
+        },
+
+        getPost: function(){
+            return this.postCollection.get(this.get('post'));
+        },
+
+        getPostContent: function(){
+            return this.getPost().get('content');
+        },
+
+        getJSON: function(){
+            var data = this.toJSON();
+            data.postData = this.getPost().toJSON();
+            return data;
         }
     });
-
 })();

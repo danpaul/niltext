@@ -27,12 +27,7 @@ nilText.Collections = nilText.Collections || {};
                     data: {'ids[]': unstoredIds}
                 }).error(function(jqXHR, status, error){ throw(error); }
                 ).success(function(postNodes){
-                	// var postIds = _.map(postNodes, function(postNode){return postNode.post});
                     that.storePosts(postNodes, callback);
-                    // if( that.postCollection === null ){ throw('postCollection not defined'); }
-                    // that.postCollection.addPosts(postIds, function(){
-                    // 	if(callback){ callback(that.getPosts(ids)); }
-                    // });
                 });
             }else{
             	that.getPosts(ids, callback);
@@ -43,10 +38,15 @@ nilText.Collections = nilText.Collections || {};
 
         },
 
+        //post must be in collection to use this function
         getPosts: function(idArray){
             var that = this;
             return _.map(idArray, function(id){ return that.get(id); })
         },
+
+        // getPostContent: function(){
+        // 	return this.postCollection.get(this.get('post')).get('content');
+        // },
 
         getPostNodeChildren: function(id, callback){
         	var isInTable = false;
@@ -96,18 +96,7 @@ nilText.Collections = nilText.Collections || {};
 			that.postCollection.addPosts(postIds, function(){
 				if(callback){ callback(postNodeModels); }
 			});
-
-            // var that = this;
-            // _.each(postNodes, function(postNode){
-            //     postNode.id = postNode._id;
-            //     delete(postNode._id);
-            //     var newPostNode = new nilText.Models.PostNodeModel(postNode);
-            //     that.add(newPostNode);
-            // });
         },
-
-
-
     });
 
 })();

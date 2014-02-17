@@ -18,7 +18,7 @@ nilText.Routers = nilText.Routers || {};
 	    },
 
 	    index: function(){
-	      $('body').append('index route has been called');
+	      
 	    },
 
       post: function(id){
@@ -34,16 +34,19 @@ nilText.Routers = nilText.Routers || {};
         // });
 
         nilText.storyCollection.findStory(storyId, function(story){
-          story.getPostNodeChildren(postNodeId, function(postNode){
-            console.log(postNode);
+          story.getPostNodeChildren(postNodeId, function(postNodeChildren){
+            var postNodeView = new nilText.Views.PostNodeView({model: postNodeChildren[0]});
+            postNodeView.render();
+            
+// console.log(postNodeView.el);
+            // postNodeChildren[0].getPostContent();
           });
         });
-
       },
 
       story: function(id){
         var story = new nilText.Models.StoryModel({'id': id});
-console.log(id)
+console.log(id);
       },
 
       postNodeTest: function(){

@@ -13,18 +13,9 @@ nilText.Models = nilText.Models || {};
 
     nilText.Models.PostModel = Backbone.Model.extend({
 
-        // urlRoot: nilText.config.baseUrl + '/post',
+        initialize: function() { },
 
-        initialize: function() {
-// console.log('init');
-            // this.fetch();
-        },
-
-        defaults: {
-            id: '',
-            content: '',
-            author: ''
-        },
+        defaults: { id: '', content: '', author: '' },
 
         validate: function(attrs, options){
 

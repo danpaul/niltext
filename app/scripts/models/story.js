@@ -32,7 +32,7 @@ nilText.Models = nilText.Models || {};
             });
         },
 
-        getPostNodeChildren: function(postNodeId, depth, callback){
+        getPostNodeChildren: function(postNodeId, callback){
             this.postNodeCollection.getPostNodeChildren(postNodeId, callback);
         },
 
