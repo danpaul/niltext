@@ -26,10 +26,19 @@ nilText.Routers = nilText.Routers || {};
       },
 
       storyNode: function(storyId, postNodeId){
-        var story = new nilText.Models.StoryModel({'id': storyId});
-        story.create(postNodeId, function(story){
-          console.log(story.postNodeCollection);
+
+        // nilText.storyCollection.findStory(storyId, function(story){
+        //   story.getStoryNode(postNodeId, function(postNode){
+        //     console.log(postNode);
+        //   });
+        // });
+
+        nilText.storyCollection.findStory(storyId, function(story){
+          story.getPostNodeChildren(postNodeId, function(postNode){
+            console.log(postNode);
+          });
         });
+
       },
 
       story: function(id){

@@ -14,12 +14,7 @@ nilText.Models = nilText.Models || {};
             this.postNodeCollection = new nilText.Collections.PostNodeCollection();
         },
 
-        defaults: {
-            id: null,
-            author: null,
-            root: null,
-            // postNodeCollection: null
-        },
+        defaults: { id: null, author: null, root: null },
 
         validate: function(attrs, options) {
         },
@@ -29,7 +24,19 @@ nilText.Models = nilText.Models || {};
             return response;
         },
 
-        create: function(postNodeId, callback){
+        instantiate: function(callback){
+            var that = this;
+            this.fetch({
+              success: function(){ callback(that); },
+              error: function(){ throw 'Unable to fetch Story.'; }
+            });
+        },
+
+        getPostNodeChildren: function(postNodeId, depth, callback){
+            this.postNodeCollection.getPostNodeChildren(postNodeId, callback);
+        },
+
+        getStoryNode: function(postNodeId, callback){
             var that = this;
             this.fetch({
               success: function(){

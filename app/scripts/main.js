@@ -10,6 +10,7 @@ window.nilText = {
     init: function () {
         'use strict';
         this.postCollection = new this.Collections.PostCollection();
+        this.storyCollection = new this.Collections.StoryCollection();
     }
 };
 
